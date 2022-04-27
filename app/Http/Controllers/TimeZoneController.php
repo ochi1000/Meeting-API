@@ -18,6 +18,12 @@ class TimeZoneController extends Controller
             'format' => 'json'
         ]);
         $data = json_decode($response);
+        
+        /**
+         *  check status of API and deliver proper response, 
+         * 400 in this case is used for a general case of failed or bad resquests
+        */ 
+        $status = ($data->status === 'OK') ? 200 : 400;
 
         // modified the response messages to fit our intent
         if (empty($data->message)) {
@@ -27,25 +33,20 @@ class TimeZoneController extends Controller
         // filter the zone data from response
         $zones = $data->zones;
         foreach ($zones as $key => $value) {
-            $countryName = $value->countryName;
-            /**
-             * convert timezone data to number/integer for divisibility
-             * present timezone in std 2 decimal points
-             * add + or - depending on current value and append to UTC
-             */
-            $timeZone = intval($value->gmtOffset)/3600;
-            $timeZone = number_format($timeZone, 2);
-            $timeZone = $timeZone >= 0 ? '+'.$timeZone : $timeZone;
-            $timeZone = 'UTC'.$timeZone;
-            array_push($countryZones, ['countryName'=> $countryName, 'timeZone'=>$timeZone]);
+            $country = $value->countryName;
+            $timeZone = $value->zoneName;
+            // insert each pair into a key value pair array
+            array_push($countryZones, ['country'=> $country, 'timeZone'=>$timeZone]);
         }
 
         // return filtered data
         $timezoneData = [
-            'status' => $data->status,
-            'message' => $data->message,
-            'countryZones' => $countryZones
+            'meta'=> [
+                'status' => $data->status,
+                'message' => $data->message,
+            ],
+            'data' => $countryZones
         ];
-        return $timezoneData;
+        return response()->json([$timezoneData], $status);
     }
 }

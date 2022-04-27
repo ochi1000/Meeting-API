@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TimeZoneController;
+use App\Http\Controllers\MeetingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,5 @@ use App\Http\Controllers\TimeZoneController;
 */
 
 Route::get('/countries_timezone', [TimeZoneController::class, 'index']);
+Route::post('/meeting', [MeetingController::class, 'make']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
