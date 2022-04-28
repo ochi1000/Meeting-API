@@ -32,4 +32,5 @@
 <h3> How Latency could be reduced in this API</h3>
 <p>Latency could be reduced in this API by first running a command: php artisan optimize. This command clears the route cache and makes a fresh cache, does this same for its configuration, and files. This API does not make use of the ORM database, so there is less to worry about latency, and we have moved our dependence on storage to faster Databases by leveraging and building on already optimized APIs</p>
 
+<h4>Docker Container</h4>
 <p>I want to mention that I really tried running this application in a docker container, and got alot of issues, I had to recreate the application, as I had messed everything up while trying to run it in a docker container. If given the opportunity and time I would make work. Thank you.</p>
