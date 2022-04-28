@@ -8,11 +8,11 @@
 <p>In the root directory of the application, open terminal</p>
 <p>Execute: composer install</p>
 <p>Execute: php artisan serve</p>
-<p>Using your prefer API testing application</p>
+<p>Using your prefered API testing application (Postman, Thunder Client, etc.)</p>
 <h3>API Routes</h3>
 <p>GET(request) http://127.0.0.1:8000/api/countries_timezone : get all countires and their respective timezones</p>
 <p>POST(request) http://127.0.0.1:8000/api/meeting : the following body fields are used</p>
-<p>name: dates[], value:date format:YYYY-MM-DD, eg. 2022-05-07. This field represents dates that are desired to have a meeting.<span>(This field is required, and can used severally as it compiles all values into an array)</span></p>
+<p>name: dates[], value:date format:YYYY-MM-DD, eg. 2022-05-07. This field represents dates that are desired to have a meeting.<span>(This field is required, and it has an array type)</span></p>
 <p>name: country code, value: eg. NG. This field is required</p>
 <p>name: timeZones value: eg. Africa/Lagos. This field is required</p>
 <p>name: startTime value: eg. 09:00. This field is required and represents your office startTime</p>
@@ -20,7 +20,7 @@
 <p>name: day2_Ops value:date format:YYYY-MM-DD, eg. 2022-05-07. This is an optional field and represents Day 2 operations</p>
 
 <h4>Day 2 Operations</h4>
-<p>Day 2 operations is the time when a product is deployed or shipped for the customer, day 2 operations involve maintaining, monitoring, and optimizing the system, in this API, a condition has been made possible where the person  involved in day2 operation would not be available for a meeting </p>
+<p>Day 2 operations is the time when a product is deployed or shipped for the customer, day 2 operations involve maintaining, monitoring, and optimizing the system, in this API, a condition has been made possible where a person  involved in day2 operation would not be available for a meeting </p>
 
 <h2>Implementation</h2>
 <p>This API was built upon the timezonedb API --docs-- https://timezonedb.com/references/get-time-zone and the calendarific api --docs-- https://calendarific.com/api-documentation. These APIs are accurate, constantly up-to-date, and consumers are always updated on any changes in the schema. Also their reponse is quick as compared to querying a database for such data.</p>
@@ -33,4 +33,4 @@
 <p>Latency could be reduced in this API by first running a command: php artisan optimize. This command clears the route cache and makes a fresh cache, does this same for its configuration, and files. This API does not make use of the ORM database, so there is less to worry about latency, and we have moved our dependence on storage to faster Databases by leveraging and building on already optimized APIs</p>
 
 <h4>Docker Container</h4>
-<p>I want to mention that I really tried running this application in a docker container, and got alot of issues, I had to recreate the application, as I had messed everything up while trying to run it in a docker container. If given the opportunity and time I would make work. Thank you.</p>
+<p>I want to mention that I really tried running this application in a docker container, and got alot of issues, I had to recreate the application, as I had messed everything up while trying to run it in a docker container. If given the opportunity and time I would make it work. Thank you.</p>
