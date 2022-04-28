@@ -28,3 +28,6 @@
 
 <h3>Run Test Suite</h3>
 <p>Execute: php artisan test</p>
+
+<h3> How Latency could be reduced in this API</h3>
+<p>Latency could be reduced in this API by first running a command: php artisan optimize. This command clears the route cache and makes a fresh cache, does this same for its configuration, and files. This API does not make use of the ORM database, so there is less to worry about latency, and we have moved our dependence on storage to faster Databases by leveraging and building on already optimized APIs</p>
