@@ -18,4 +18,5 @@ use App\Http\Controllers\MeetingController;
 
 Route::get('/countries_timezone', [TimeZoneController::class, 'index']);
 Route::post('/meeting', [MeetingController::class, 'make']);
+Route::get('/meetings', [MeetingController::class, 'match']);
 

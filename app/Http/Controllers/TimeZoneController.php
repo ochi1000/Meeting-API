@@ -21,7 +21,7 @@ class TimeZoneController extends Controller
         
         /**
          *  check status of API and deliver proper response, 
-         * 400 in this case is used for a general case of failed or bad resquests
+         * 400 in this case is used for a general case of failed/bad/unauthenticated resquests
         */ 
         $status = ($data->status === 'OK') ? 200 : 400;
 
