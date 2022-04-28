@@ -1,64 +1,30 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1>Meeting API</h1>
+<br>
+<p>Meeting API provides optimal meeting times for people in any part of the world, and also provides a list of countries and timezones to aid in providing accurate data, for getting optimal meeting times.</p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<h2>Usage</h2>
+<p>Clone this repo</p>
+<p>Ensure you have composer installed on your machine https://getcomposer.org/download/</p>
+<p>In the root directory of the application, open terminal</p>
+<p>Execute: composer install</p>
+<p>Execute: php artisan serve</p>
+<p>Using your prefer API testing application</p>
+<h3>API Routes</h3>
+<p>GET(request) http://127.0.0.1:8000/api/countries_timezone : get all countires and their respective timezones</p>
+<p>POST(request) http://127.0.0.1:8000/api/meeting : the following body fields are used</p>
+<p>name: dates[], value:date format:YYYY-MM-DD, eg. 2022-05-07. This field represents dates that are desired to have a meeting.<span>(This field is required, and can used severally as it compiles all values into an array)</span></p>
+<p>name: country code, value: eg. NG. This field is required</p>
+<p>name: timeZones value: eg. Africa/Lagos. This field is required</p>
+<p>name: startTime value: eg. 09:00. This field is required and represents your office startTime</p>
+<p>name: stopTime value: eg. 17:00. This field is required and represents your office stopTime</p>
+<p>name: day2_Ops value:date format:YYYY-MM-DD, eg. 2022-05-07. This is an optional field and represents Day 2 operations</p>
 
-## About Laravel
+<h4>Day 2 Operations</h4>
+<p>Day 2 operations is the time when a product is deployed or shipped for the customer, day 2 operations involve maintaining, monitoring, and optimizing the system, in this API, a condition has been made possible where the person  involved in day2 operation would not be available for a meeting </p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h2>Implementation</h2>
+<p>This API was built upon the timezonedb API --docs-- https://timezonedb.com/references/get-time-zone and the calendarific api --docs-- https://calendarific.com/api-documentation. These APIs are accurate, constantly up-to-date, and consumers are always updated on any changes in the schema. Also their reponse is quick as compared to querying a database for such data.</p>
+<p>Considering that the provided office start and close time, reflects winter time and summer time (DST) at a particular region, with the data provided, first validation is done to confirm and accept input data, then we filter the dates with day2 operations and holidays. From the left out dates, using the office start and close times provided, I added an hour to the start time to get the first optimal time for a meeting, for a date, and subtracted 2 hours from the close time to get last optimal time for a meeting to start, for the same date. With that I provided al available time to start a meeting.</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<h3>Run Test Suite</h3>
+<p></p>
