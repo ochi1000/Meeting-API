@@ -27,4 +27,4 @@
 <p>Considering that the provided office start and close time, reflects winter time and summer time (DST) at a particular region, with the data provided, first validation is done to confirm and accept input data, then we filter the dates with day2 operations and holidays. From the left out dates, using the office start and close times provided, I added an hour to the start time to get the first optimal time for a meeting, for a date, and subtracted 2 hours from the close time to get last optimal time for a meeting to start, for the same date. With that I provided al available time to start a meeting.</p>
 
 <h3>Run Test Suite</h3>
-<p></p>
+<p>Execute: php artisan test</p>
