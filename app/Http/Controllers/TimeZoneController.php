@@ -47,6 +47,6 @@ class TimeZoneController extends Controller
             ],
             'data' => $countryZones
         ];
-        return response()->json([$timezoneData], $status);
+        return response()->json($timezoneData, $status);
     }
 }
