@@ -11,6 +11,7 @@
 <p>Using your prefered API testing application (Postman, Thunder Client, etc.)</p>
 <h3>API Routes</h3>
 <p>GET(request) http://127.0.0.1:8000/api/countries_timezone : get all countires and their respective timezones</p>
+<img src="https://user-images.githubusercontent.com/39088587/165984486-ee7d53ae-afaa-4eaf-aca9-08cd4aa3f74c.png">
 <p>POST(request) http://127.0.0.1:8000/api/meeting : the following body fields are used</p>
 <p>name: dates[], value:date format:YYYY-MM-DD, eg. 2022-05-07. This field represents dates that are desired to have a meeting.<span>(This field is required, and it has an array type)</span></p>
 <p>name: country code, value: eg. NG. This field is required</p>
@@ -18,6 +19,8 @@
 <p>name: startTime value: eg. 09:00. This field is required and represents your office startTime</p>
 <p>name: stopTime value: eg. 17:00. This field is required and represents your office stopTime</p>
 <p>name: day2_Ops value:date format:YYYY-MM-DD, eg. 2022-05-07. This is an optional field and represents Day 2 operations</p>
+<img src="https://user-images.githubusercontent.com/39088587/165984532-567159f5-5ac6-43e7-89d2-d8a79d06adc0.png">
+<img src="https://user-images.githubusercontent.com/39088587/165984521-9da4be25-691c-4814-b04a-8e4ea80d0444.png">
 
 <h4>Day 2 Operations</h4>
 <p>Day 2 operations is the time when a product is deployed or shipped for the customer, day 2 operations involve maintaining, monitoring, and optimizing the system, in this API, a condition has been made possible where a person  involved in day2 operation would not be available for a meeting </p>
@@ -33,4 +36,4 @@
 <p>Latency could be reduced in this API by first running a command: php artisan optimize. This command clears the route cache and makes a fresh cache, does this same for its configuration, and files. This API does not make use of the ORM database, so there is less to worry about latency, and we have moved our dependence on storage to faster Databases by leveraging and building on already optimized APIs</p>
 
 <h4>Docker Container</h4>
-<p>I want to mention that I really tried running this application in a docker container, and got alot of issues, I had to recreate the application, as I had messed everything up while trying to run it in a docker container. If given the opportunity and time I would make it work. Thank you.</p>
+<p>I want to mention that I really tried running this application in a docker container, and got into alot of issues. I had to recreate the application, as I had messed everything up while trying to run it in a docker container. If given the opportunity and time I would make it work. Thank you.</p>
